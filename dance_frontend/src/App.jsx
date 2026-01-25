@@ -1,12 +1,5 @@
-import { Outlet } from 'react-router-dom'
-import { Layout } from './components/layout'
-
 function App() {
-  return (
-    <Layout>
-      <Outlet />
-    </Layout>
-  )
+  return null; // Layout is now handled in router
 }
 
 export default App

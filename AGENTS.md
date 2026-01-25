@@ -1,6 +1,9 @@
 # AGENTS.md
 
-This file provides guidelines for agentic coding agents working in this repository. It includes build, lint, test commands, and code style guidelines to ensure consistency across the codebase.
+This file provides guidelines for agentic coding agents working in this repository. It includes build, lint, test commands, and code style guidelines to ensure consistency across the codebase. 
+
+## GitHub Repo Token
+- [REDACTED]
 
 ## Repository Structure
 
@@ -434,15 +437,15 @@ API Client (api/*.js)
    - Add error boundary component ⏳
 
 #### Phase 2: Layout Foundation
-1. **Layout Components**
-   - Create Layout.jsx with basic structure
-   - Create Header.jsx with navigation
-   - Create Footer.jsx placeholder
+1. **Layout Components** ✅
+   - Create Layout.jsx with basic structure ✅
+   - Create Header.jsx with navigation ✅
+   - Create Footer.jsx placeholder ✅
 
 2. **Common Components**
-   - Create Loading.jsx component
-   - Create ErrorMessage.jsx component
-   - Create EmptyState.jsx component
+   - Create Loading.jsx component ⏳
+   - Create ErrorMessage.jsx component ⏳
+   - Create EmptyState.jsx component ⏳
 
 #### Phase 3: Feature Implementation
 1. **Pages Feature**
@@ -489,9 +492,23 @@ API Client (api/*.js)
 - All 9 tasks in Phase 1 (Core Infrastructure) are complete
 - Frontend foundation is ready for Phase 2 (Layout Foundation)
 
+### Completed Tasks (Phase 2: Layout Foundation)
+
+**✅ Layout Components**
+- Created `Layout.jsx` with basic structure and semantic HTML
+- Created `Header.jsx` with navigation links (Home, Pages, Classes, News)
+- Created `Footer.jsx` placeholder with copyright and legal links
+- Updated `AppRouter.jsx` to wrap all routes with Layout component
+- Simplified `App.jsx` since Layout is handled at router level
+
+### Remaining Tasks (Phase 2)
+- ⏳ Create Loading.jsx component
+- ⏳ Create ErrorMessage.jsx component
+- ⏳ Create EmptyState.jsx component
+
 ## Current Frontend Goals
 - ✅ Implement core infrastructure and data flow
-- ⏳ Create layout and common components  
+- 🚧 Create layout and common components (3/6 complete) 
 - ⏳ Implement Pages feature as proof of concept
 - ✅ Establish error handling and loading patterns
 

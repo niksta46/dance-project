@@ -7,8 +7,11 @@ import './styles/global.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ErrorBoundary>
-      <RouterProvider router={router} />
-    </ErrorBoundary>
+    <RouterProvider router={router} />
   </StrictMode>,
 )
+
+
+//<ErrorBoundary>
+  //<RouterProvider router={router} />
+//</ErrorBoundary>
