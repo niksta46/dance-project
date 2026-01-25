@@ -1,0 +1,280 @@
+# AGENTS.md
+
+This file provides guidelines for agentic coding agents working in this repository. It includes build, lint, test commands, and code style guidelines to ensure consistency across the codebase.
+
+## Repository Structure
+
+- `dance_backend/`: Django backend with REST API using Django REST Framework
+- `dance_frontend/`: React frontend built with Vite
+- `venv/`: Python virtual environment (in dance_backend/)
+- `db.sqlite3`: SQLite database
+
+## Build, Lint, and Test Commands
+
+### Backend (Django)
+
+**Run Development Server:**
+```bash
+cd dance_backend
+source venv/bin/activate
+python manage.py runserver
+```
+
+**Create Migrations:**
+```bash
+cd dance_backend
+source venv/bin/activate
+python manage.py makemigrations
+```
+
+**Apply Migrations:**
+```bash
+cd dance_backend
+source venv/bin/activate
+python manage.py migrate
+```
+
+**Run All Tests:**
+```bash
+cd dance_backend
+source venv/bin/activate
+python manage.py test
+```
+
+**Run Single Test:**
+```bash
+cd dance_backend
+source venv/bin/activate
+python manage.py test my_app.tests.TestClass.test_method
+```
+Replace `my_app`, `TestClass`, and `test_method` with the actual app name, test class, and test method.
+
+**Linting (Recommended Tools):**
+Install Black, isort, and flake8:
+```bash
+cd dance_backend
+source venv/bin/activate
+pip install black isort flake8
+```
+
+**Format Code with Black:**
+```bash
+cd dance_backend
+source venv/bin/activate
+black .
+```
+
+**Sort Imports with isort:**
+```bash
+cd dance_backend
+source venv/bin/activate
+isort .
+```
+
+**Lint with flake8:**
+```bash
+cd dance_backend
+source venv/bin/activate
+flake8 .
+```
+
+### Frontend (React/Vite)
+
+**Run Development Server:**
+```bash
+cd dance_frontend
+npm run dev
+```
+
+**Build for Production:**
+```bash
+cd dance_frontend
+npm run build
+```
+
+**Lint Code:**
+```bash
+cd dance_frontend
+npm run lint
+```
+
+**Test (if configured):**
+```bash
+cd dance_frontend
+npm test
+```
+
+**Run Single Test (Jest):**
+```bash
+cd dance_frontend
+npm test -- --testNamePattern="test name"
+```
+Or use:
+```bash
+cd dance_frontend
+npm test path/to/test/file.test.js
+```
+
+**Install Dependencies:**
+```bash
+cd dance_frontend
+npm install
+```
+
+## Code Style Guidelines
+
+### General Principles
+
+- Follow consistent naming conventions.
+- Use descriptive names for variables, functions, classes, and files.
+- Write self-documenting code with clear comments where necessary.
+- Avoid magic numbers; use constants.
+- Handle errors gracefully with appropriate logging or user feedback.
+- Keep functions and methods short and focused on a single responsibility.
+- Use version control best practices: commit often, write meaningful commit messages.
+
+### Backend (Django/Python)
+
+**Formatting:**
+- Use Black for code formatting with default settings.
+- Line length: 88 characters (Black default).
+- Indentation: 4 spaces.
+
+**Imports:**
+- Use isort for import sorting.
+- Standard library imports first, then third-party, then local imports.
+- One import per line.
+- Avoid wildcard imports (`from module import *`).
+
+**Naming Conventions:**
+- Classes: PascalCase (e.g., `MyModel`)
+- Functions/Methods: snake_case (e.g., `my_function`)
+- Variables: snake_case (e.g., `my_variable`)
+- Constants: UPPER_SNAKE_CASE (e.g., `MY_CONSTANT`)
+- Files: snake_case (e.g., `my_module.py`)
+- URLs: kebab-case in URL patterns (e.g., `my-page/`)
+
+**Type Hints:**
+- Use type hints for function parameters and return types where possible.
+- Example: `def my_function(param: int) -> str:`
+
+**Error Handling:**
+- Use try-except blocks for potential exceptions.
+- Log errors using Django's logging framework.
+- Raise appropriate exceptions (e.g., `ValidationError` for invalid data).
+
+**Models:**
+- Use verbose names and help texts.
+- Define `__str__` methods.
+- Use Meta classes for ordering, verbose names, etc.
+- Follow Django's model field best practices.
+
+**Views and Serializers:**
+- Use DRF's class-based views and serializers.
+- Validate input data.
+- Return appropriate HTTP status codes.
+- Use pagination for list views.
+
+**Security:**
+- Never commit secrets; use environment variables.
+- Validate and sanitize user input.
+- Use Django's built-in authentication and permissions.
+
+**Testing:**
+- Write unit tests for models, views, and serializers.
+- Use Django's TestCase.
+- Mock external dependencies.
+- Aim for high test coverage.
+
+### Frontend (React/JavaScript)
+
+**Formatting:**
+- Use Prettier for consistent formatting.
+- Configure Prettier in `.prettierrc` if needed.
+- Line length: 80-100 characters.
+
+**Imports:**
+- Use ES6 imports.
+- Group imports: React, third-party libraries, then local components/utilities.
+- Use absolute imports with aliases (e.g., `@/components`).
+
+**Naming Conventions:**
+- Components: PascalCase (e.g., `MyComponent`)
+- Functions: camelCase (e.g., `myFunction`)
+- Variables: camelCase (e.g., `myVariable`)
+- Constants: UPPER_SNAKE_CASE or camelCase
+- Files: PascalCase for components (e.g., `MyComponent.jsx`), camelCase for utilities.
+
+**JSX:**
+- Use self-closing tags for components without children.
+- Use descriptive prop names.
+- Avoid inline styles; use CSS modules or styled-components.
+
+**State Management:**
+- Use React hooks (useState, useEffect, etc.) for local state.
+- For global state, consider Context API or Redux if needed.
+- Avoid prop drilling; use composition.
+
+**Error Handling:**
+- Use try-catch in async functions.
+- Display user-friendly error messages.
+- Use React Error Boundaries for component errors.
+
+**Performance:**
+- Memoize expensive computations with useMemo.
+- Use useCallback for event handlers.
+- Optimize renders with React.memo.
+- Lazy load components and images.
+
+**Testing:**
+- Use Jest and React Testing Library.
+- Write unit tests for components and hooks.
+- Mock API calls.
+- Test user interactions.
+
+**Accessibility:**
+- Use semantic HTML.
+- Add alt text to images.
+- Ensure keyboard navigation.
+- Use ARIA attributes where needed.
+
+### Version Control
+
+- Use Git for version control.
+- Branch naming: feature/feature-name, bugfix/bug-name, etc.
+- Commit messages: "Add feature X" or "Fix bug Y".
+- Pull requests: Provide descriptions, link to issues.
+
+### Documentation
+
+- Use docstrings for Python functions and classes.
+- Comment complex logic.
+- Maintain a README.md with setup and usage instructions.
+- Use JSDoc for JavaScript functions.
+
+### Tools and Dependencies
+
+- Backend: Django 6.0.1, DRF, Pillow
+- Frontend: React 19, Vite, ESLint
+- Python: 3.12
+- Node.js: As per package.json
+
+Always check package.json and requirements.txt for exact versions.
+
+## Cursor Rules
+
+No Cursor rules found in .cursor/rules/ or .cursorrules.
+
+## Copilot Rules
+
+No Copilot instructions found in .github/copilot-instructions.md.
+
+## Additional Notes
+
+- For database changes, always create and apply migrations.
+- Test changes locally before committing.
+- Use the virtual environment for Python dependencies.
+- Keep dependencies up to date and audit for security vulnerabilities.
+- Follow the principle of least privilege in API designs.
+
+This document should be updated as the codebase evolves.
