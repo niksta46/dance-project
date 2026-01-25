@@ -269,6 +269,68 @@ No Cursor rules found in .cursor/rules/ or .cursorrules.
 
 No Copilot instructions found in .github/copilot-instructions.md.
 
+## Project Status
+
+### Backend (Django REST API)
+
+**Models (Completed):**
+- `Page`: Basic page content with auto-order functionality
+- `ClassSection`: Dance class information (name, description, age group, level, schedule)
+- `NewsPost`: News/blog posts with image support
+- `ContactMessage`: Contact form submissions
+- `SocialLink`: Social media links
+- `MediaItem`: Photo/video gallery with type validation
+
+**Serializers (Completed):**
+- All models have ModelSerializers with field-level validation
+- Validation strategy: Minimal essential validation (normalize data, enforce business rules)
+- PageSerializer: Slug normalization
+- ClassSectionSerializer: Basic field stripping
+- NewsPostSerializer: Field stripping and slug normalization  
+- ContactMessageSerializer: Email normalization
+- SocialLinkSerializer: URL format validation
+- MediaItemSerializer: Object-level validation for media type consistency
+
+**Views (Completed):**
+- APIView pattern (not ViewSets) - logic-free views
+- Complete CRUD operations for all models
+- Separate list and detail view classes
+- Proper HTTP status codes and error handling
+
+**API Endpoints (Completed):**
+```
+/api/pages/ (GET, POST) & /api/pages/<id>/ (GET, PUT, PATCH, DELETE)
+/api/class-sections/ (GET, POST) & /api/class-sections/<id>/ (GET, PUT, PATCH, DELETE)
+/api/news-posts/ (GET, POST) & /api/news-posts/<id>/ (GET, PUT, PATCH, DELETE)
+/api/contact-messages/ (GET, POST) & /api/contact-messages/<id>/ (GET, PUT, PATCH, DELETE)
+/api/social-links/ (GET, POST) & /api/social-links/<id>/ (GET, PUT, PATCH, DELETE)
+/api/media-items/ (GET, POST) & /api/media-items/<id>/ (GET, PUT, PATCH, DELETE)
+```
+
+**Tests (Completed):**
+- Comprehensive test files using DRF APITestCase
+- One test file per model in `my_app/tests/`
+- Coverage: CRUD operations, validation, error handling, business logic
+- Test files: `test_page_api.py`, `test_class_section_api.py`, `test_news_post_api.py`, `test_contact_message_api.py`, `test_social_link_api.py`, `test_media_item_api.py`
+
+**Database (Completed):**
+- Migrations created and applied
+- SQLite database with all tables
+- Auto-order functionality implemented in Page model
+
+**File Structure (Completed):**
+- Media folders: `media/`, `media/news/`, `media/media/photos/`
+- Static folders: `static/`, `static/css/`, `static/js/`, `static/images/`
+- Templates folder: `templates/`
+- All directories tracked with `.gitkeep` files
+
+**Not Yet Implemented:**
+- Pagination: Not implemented (simple list returns)
+- Filtering: Not implemented (basic queryset only)
+- Search: Not implemented 
+- Permissions: Not implemented (no authentication/authorization)
+- File upload handling: Basic DRF setup, needs frontend integration
+
 ## Additional Notes
 
 - For database changes, always create and apply migrations.
