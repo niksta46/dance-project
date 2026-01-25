@@ -339,4 +339,156 @@ No Copilot instructions found in .github/copilot-instructions.md.
 - Keep dependencies up to date and audit for security vulnerabilities.
 - Follow the principle of least privilege in API designs.
 
+## Project Status (High Level)
+- Backend API completed (models, serializers, views, urls, tests)
+- Backend is considered stable unless frontend requires changes
+- Frontend development starting now
+
+## Backend Rules
+- Do NOT modify backend files unless explicitly instructed
+- Treat backend as an external API
+- Backend endpoints are documented and tested
+
+## Frontend Scope
+- Stack: React + Vite (example)
+- All new work should be inside /dance_frontend
+- Focus on consuming existing API endpoints
+- Do not generate Django or Python code
+
+## Frontend Architecture and Data Flow
+
+### Backend API Contract
+- **Endpoints**: 6 resources (pages, class-sections, news-posts, contact-messages, social-links, media-items)
+- **Pattern**: `/api/{resource}/` (GET/POST) and `/api/{resource}/{id}/` (GET/PUT/PATCH/DELETE)
+- **Response**: JSON data with Django REST Framework structure
+- **Models**: Page, ClassSection, NewsPost, ContactMessage, SocialLink, MediaItem
+- **Base URL**: `http://localhost:8000/api/`
+
+### Frontend Structure
+```
+src/
+├── api/                    # API client layer
+│   ├── client.js          # Fetch wrapper with error handling
+│   ├── pages.js           # Pages endpoints
+│   ├── classSections.js   # Class sections endpoints
+│   ├── newsPosts.js       # News posts endpoints
+│   ├── contactMessages.js # Contact messages endpoints
+│   ├── socialLinks.js     # Social links endpoints
+│   └── mediaItems.js      # Media items endpoints
+├── features/              # Feature-based organization
+│   ├── pages/            # Pages feature
+│   ├── news/             # News feature
+│   └── classes/          # Classes feature
+├── components/           # Reusable UI components
+│   ├── layout/          # Layout components
+│   └── common/          # Common components
+├── hooks/               # Custom React hooks
+│   └── useFetch.js     # Generic fetch hook
+├── routes/             # Router configuration
+│   └── AppRouter.jsx   # Main router
+└── styles/            # Global styles
+    └── global.css     # Base styles
+```
+
+### Data Flow Pattern
+```
+API Client (api/*.js) 
+  → Custom Hook (hooks/useFetch.js) 
+  → Feature Component (features/*/*.jsx) 
+  → UI Component (components/*/*.jsx)
+```
+
+### API Service Layer Conventions
+- Each resource = separate module (pages.js, classSections.js, etc.)
+- Consistent method names: `getAll`, `getById`, `create`, `update`, `patch`, `delete`
+- Centralized error handling in client.js
+- Environment-based base URL via VITE_API_URL
+
+### Error Handling Strategy
+- **Network errors**: Caught in client.js, thrown as `Error` objects
+- **Server errors (4xx/5xx)**: Extract `detail` field from DRF response
+- **Validation errors**: DRF returns structured validation errors
+- **Display**: Dedicated ErrorMessage component with contextual messaging
+
+### Loading State Strategy
+- **Global**: Loading component for full-page operations
+- **Local**: Component-level loading indicators (buttons, cards)
+- **States**: `loading`, `error`, `success`, `empty`
+- **Hook pattern**: `useFetch` returns `{ data, loading, error }`
+
+### Frontend Development Plan
+
+#### Phase 1: Core Infrastructure
+1. **Setup Dependencies** ✅
+   - Install `react-router-dom` ✅
+   - Configure VITE_API_URL environment variable ✅
+
+2. **Core Infrastructure** ✅
+   - Update main.jsx to use router ✅
+   - Update App.jsx to use RouterView ✅
+   - Replace index.css with styles/global.css ✅
+
+3. **Data Layer** ✅
+   - Test API client with real backend ✅
+   - Add useFetch hook integration test ✅
+   - Add error boundary component ⏳
+
+#### Phase 2: Layout Foundation
+1. **Layout Components**
+   - Create Layout.jsx with basic structure
+   - Create Header.jsx with navigation
+   - Create Footer.jsx placeholder
+
+2. **Common Components**
+   - Create Loading.jsx component
+   - Create ErrorMessage.jsx component
+   - Create EmptyState.jsx component
+
+#### Phase 3: Feature Implementation
+1. **Pages Feature**
+   - Create PagesList.jsx component
+   - Create PageDetail.jsx component
+   - Connect to pages API endpoint
+   - Test list and detail views
+
+2. **Additional Features**
+   - Implement News feature (list/detail)
+   - Implement Classes feature (list/detail)
+   - Add routing between features
+
+## Frontend Implementation Progress
+
+### Completed Tasks (Phase 1: Core Infrastructure)
+
+**✅ Dependencies & Configuration**
+- Installed `react-router-dom` package
+- Created `.env` file with `VITE_API_URL=http://localhost:8000/api`
+
+**✅ Core Infrastructure Setup**
+- Updated `main.jsx` to use `RouterProvider` from react-router-dom
+- Updated `App.jsx` to use `Layout` component with `Outlet` for routing
+- Replaced default `index.css` with custom `styles/global.css`
+- Added ErrorBoundary component wrapped around RouterProvider for global error handling
+
+**✅ API Layer Testing**
+- Confirmed Django backend API endpoints are accessible
+- Tested API client fetch logic with real backend
+- Verified error handling for 404 responses
+- Confirmed empty data responses work correctly
+
+**✅ useFetch Hook Integration Testing**
+- Tested hook state management pattern (`data`, `loading`, `error`)
+- Verified API call logic works with Django backend
+- Confirmed error handling for network/server errors
+- Tested loading state transitions
+
+### Remaining Tasks (Phase 1)
+- ✅ Add error boundary component
+
+## Current Frontend Goals
+- ✅ Implement core infrastructure and data flow
+- ⏳ Create layout and common components  
+- ⏳ Implement Pages feature as proof of concept
+- ✅ Establish error handling and loading patterns
+
 This document should be updated as the codebase evolves.
