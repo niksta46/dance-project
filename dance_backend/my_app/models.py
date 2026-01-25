@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Max
 
 # Create your models here.
 
@@ -13,6 +14,12 @@ class Page(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def save(self, *args, **kwargs):
+        if self.order == 0:
+            last_order = Page.objects.aggregate(max_order=Max('order'))['max_order'] or 0
+            self.order = last_order + 1
+        super().save(*args, **kwargs)
 
 
 class ClassSection(models.Model):
