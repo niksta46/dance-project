@@ -2,9 +2,6 @@
 
 This file provides guidelines for agentic coding agents working in this repository. It includes build, lint, test commands, and code style guidelines to ensure consistency across the codebase. 
 
-## GitHub Repo Token
-- [REDACTED]
-
 ## Repository Structure
 
 - `dance_backend/`: Django backend with REST API using Django REST Framework
