@@ -1,3 +1,5 @@
-export { default as Loading } from './Loading.jsx';
-export { default as ErrorMessage } from './ErrorMessage.jsx';
-export { default as EmptyState } from './EmptyState.jsx';
+// Common components barrel export
+export { default as Loading } from './Loading';
+export { default as ErrorMessage } from './ErrorMessage';
+export { default as EmptyState } from './EmptyState';
+export { default as EmptyStatePresets } from './EmptyStatePresets';

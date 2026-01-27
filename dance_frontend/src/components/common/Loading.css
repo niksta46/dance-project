@@ -1,0 +1,91 @@
+/* Loading Component Styles */
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+/* Fullscreen variant */
+.loading--fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 9999;
+}
+
+/* Spinner */
+.loading__spinner {
+  position: relative;
+}
+
+.loading__spinner-circle {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #333;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Size variants */
+.loading--small .loading__spinner-circle {
+  width: 24px;
+  height: 24px;
+}
+
+.loading--medium .loading__spinner-circle {
+  width: 40px;
+  height: 40px;
+}
+
+.loading--large .loading__spinner-circle {
+  width: 60px;
+  height: 60px;
+}
+
+/* Text styles */
+.loading__text {
+  margin: 0;
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.loading--small .loading__text {
+  font-size: 0.75rem;
+}
+
+.loading--large .loading__text {
+  font-size: 1rem;
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .loading__spinner-circle {
+    animation: none;
+    border-top-color: #666;
+  }
+}

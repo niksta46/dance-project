@@ -499,14 +499,37 @@ API Client (api/*.js)
 - Simplified `App.jsx` since Layout is handled at router level
 
 ### Remaining Tasks (Phase 2)
-- ⏳ Create Loading.jsx component
-- ⏳ Create ErrorMessage.jsx component
-- ⏳ Create EmptyState.jsx component
+- ✅ Create Loading.jsx component
+- ✅ Create ErrorMessage.jsx component
+- ✅ Create EmptyState.jsx component
+
+**Phase 2 Status: COMPLETED** ✅
+- All 6 tasks in Phase 2 (Layout Foundation) are complete
+- Frontend is ready for Phase 3 (Feature Implementation)
+
+### Completed Tasks (Phase 2: Common Components)
+
+**✅ Common Components**
+- Created `Loading.jsx` with size variants (small/medium/large) and loading states
+- Created `ErrorMessage.jsx` with error type handling (string/Error/DRF/validation)
+- Created `EmptyState.jsx` with variants and preset configurations
+- Added CSS files for all components with responsive design
+- Created barrel export in `components/common/index.js`
+- Added `ComponentDemo.jsx` page to showcase all common components at `/demo` route
+
+### Recent Changes (Latest)
+
+**✅ Layout Component Fix**
+- Fixed `Layout.jsx` to use `<Outlet />` instead of `{children}` for proper React Router v6 compatibility
+- This resolved the issue where `/` and `/demo` routes were showing the same content
+- The `{children}` prop pattern doesn't work with `createBrowserRouter` nested routing
+- `<Outlet />` is the correct way to render child route components in React Router v6
 
 ## Current Frontend Goals
 - ✅ Implement core infrastructure and data flow
-- 🚧 Create layout and common components (3/6 complete) 
+- ✅ Create layout and common components (6/6 complete)
 - ⏳ Implement Pages feature as proof of concept
 - ✅ Establish error handling and loading patterns
+- ✅ Fix routing issues with Layout component
 
 This document should be updated as the codebase evolves.
