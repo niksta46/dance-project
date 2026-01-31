@@ -1,40 +1,44 @@
 import React from 'react';
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarCollapse,
+  NavbarLink,
+  NavbarToggle
+} from "flowbite-react";
 import { Link } from 'react-router-dom';
 
 function Header() {
   return (
-    <header className="header">
-      <div className="container">
-        <nav className="navbar">
-          <Link to="/" className="nav-logo">
-            Dance Studio
-          </Link>
-          
-          <ul className="nav-links">
-            <li>
-              <Link to="/" className="nav-link">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/pages" className="nav-link">
-                Pages
-              </Link>
-            </li>
-            <li>
-              <Link to="/classes" className="nav-link">
-                Classes
-              </Link>
-            </li>
-            <li>
-              <Link to="/news" className="nav-link">
-                News
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <Navbar fluid rounded>
+      <NavbarBrand as={Link} to="/">
+        <img
+          src="src/assets/images/texnis_kinisi.jpg"
+          className="mr-3 h-6 sm:h-9"
+          alt="Logo"
+        />
+        <span className="self-center whitespace-nowrap text-xl font-semibold">
+          Πανεπιστημιακός Πολιτιστικός Όμιλος "Τέχνης Κίνηση"
+        </span>
+      </NavbarBrand>
+
+      <NavbarToggle />
+
+      <NavbarCollapse>
+        <NavbarLink as={Link} to="/">
+          Home
+        </NavbarLink>
+        <NavbarLink as={Link} to="/pages">
+          Pages
+        </NavbarLink>
+        <NavbarLink as={Link} to="/classes">
+          Classes
+        </NavbarLink>
+        <NavbarLink as={Link} to="/news">
+          News
+        </NavbarLink>
+      </NavbarCollapse>
+    </Navbar>
   );
 }
 

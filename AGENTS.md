@@ -189,14 +189,14 @@ npm install
 ### Frontend (React/JavaScript)
 
 **Formatting:**
-- Use Prettier for consistent formatting.
-- Configure Prettier in `.prettierrc` if needed.
+- Use Prettier for consistent formatting (if configured).
 - Line length: 80-100 characters.
+- Tailwind CSS handles most styling; avoid custom CSS when possible.
 
 **Imports:**
 - Use ES6 imports.
-- Group imports: React, third-party libraries, then local components/utilities.
-- Use absolute imports with aliases (e.g., `@/components`).
+- Group imports: React, third-party libraries (Flowbite React components), then local components/utilities.
+- Use absolute imports with aliases (e.g., `@/components`) if configured.
 
 **Naming Conventions:**
 - Components: PascalCase (e.g., `MyComponent`)
@@ -208,7 +208,8 @@ npm install
 **JSX:**
 - Use self-closing tags for components without children.
 - Use descriptive prop names.
-- Avoid inline styles; use CSS modules or styled-components.
+- Prefer Tailwind CSS classes over inline styles.
+- Use Flowbite React components for consistent UI patterns.
 
 **State Management:**
 - Use React hooks (useState, useEffect, etc.) for local state.
@@ -255,7 +256,7 @@ npm install
 ### Tools and Dependencies
 
 - Backend: Django 6.0.1, DRF, Pillow
-- Frontend: React 19, Vite, ESLint
+- Frontend: React 19, Vite, ESLint, Tailwind CSS v3, Flowbite React
 - Python: 3.12
 - Node.js: As per package.json
 
@@ -498,13 +499,23 @@ API Client (api/*.js)
 - Updated `AppRouter.jsx` to wrap all routes with Layout component
 - Simplified `App.jsx` since Layout is handled at router level
 
+**✅ Tailwind CSS & Flowbite React Integration**
+- Installed Tailwind CSS v3 with PostCSS configuration
+- Installed Flowbite React for modern UI components
+- Configured Tailwind to work with Flowbite plugin
+- Updated Header.jsx to use Flowbite React components (Navbar, NavbarBrand, NavbarCollapse, etc.)
+- Added real logo image (`texnis_kinisi.jpg`) from `src/assets/images/`
+- Updated brand name to Greek: "Πανεπιστημιακός Πολιτιστικός Όμιλος 'Τέχνης Κίνηση'"
+- Converted global.css to use Tailwind directives (`@tailwind base`, `@tailwind components`, `@tailwind utilities`)
+
 ### Remaining Tasks (Phase 2)
 - ✅ Create Loading.jsx component
 - ✅ Create ErrorMessage.jsx component
 - ✅ Create EmptyState.jsx component
 
 **Phase 2 Status: COMPLETED** ✅
-- All 6 tasks in Phase 2 (Layout Foundation) are complete
+- All 6+ tasks in Phase 2 (Layout Foundation) are complete
+- Frontend styling infrastructure with Tailwind + Flowbite is fully implemented
 - Frontend is ready for Phase 3 (Feature Implementation)
 
 ### Completed Tasks (Phase 2: Common Components)
@@ -519,6 +530,20 @@ API Client (api/*.js)
 
 ### Recent Changes (Latest)
 
+**✅ Tailwind CSS & Flowbite React Integration**
+- Installed and configured Tailwind CSS v3 with PostCSS
+- Added Flowbite React package for modern UI components
+- Set up `.postcssrc.json` configuration for Tailwind processing
+- Updated `global.css` with proper Tailwind directives
+- Resolved PostCSS configuration issues and module compatibility
+
+**✅ Enhanced Header Component**
+- Updated Header.jsx to use Flowbite React components
+- Implemented modern navbar with responsive design
+- Added real logo image from `src/assets/images/texnis_kinisi.jpg`
+- Updated brand name to Greek: "Πανεπιστημιακός Πολιτιστικός Όμιλος 'Τέχνης Κίνηση'"
+- Applied proper Tailwind CSS classes for styling
+
 **✅ Layout Component Fix**
 - Fixed `Layout.jsx` to use `<Outlet />` instead of `{children}` for proper React Router v6 compatibility
 - This resolved the issue where `/` and `/demo` routes were showing the same content
@@ -528,6 +553,7 @@ API Client (api/*.js)
 ## Current Frontend Goals
 - ✅ Implement core infrastructure and data flow
 - ✅ Create layout and common components (6/6 complete)
+- ✅ Integrate Tailwind CSS + Flowbite React styling framework
 - ⏳ Implement Pages feature as proof of concept
 - ✅ Establish error handling and loading patterns
 - ✅ Fix routing issues with Layout component
