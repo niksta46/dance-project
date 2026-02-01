@@ -1,5 +1,6 @@
 import React from 'react';
-import './ErrorMessage.css';
+import { Alert } from 'flowbite-react';
+import { Button } from 'flowbite-react';
 
 /**
  * ErrorMessage component - Displays error messages with contextual styling
@@ -83,37 +84,50 @@ const ErrorMessage = ({
   const message = getErrorMessage();
   const details = getErrorDetails();
 
+  const alertColor = {
+    danger: 'failure',
+    warning: 'warning', 
+    info: 'info'
+  }[variant] || 'failure';
+
   return (
-    <div 
-      className={`error-message error-message--${variant} ${className}`}
-      role="alert"
-      aria-live="assertive"
-    >
-      <div className="error-message__content">
-        <div className="error-message__icon" aria-hidden="true">
-          {variant === 'danger' && '⚠️'}
-          {variant === 'warning' && '⚡'}
-          {variant === 'info' && 'ℹ️'}
+    <div className={`space-y-4 ${className}`}>
+      <Alert 
+        color={alertColor}
+        onDismiss={!onRetry}
+        role="alert"
+        aria-live="assertive"
+      >
+        <div className="flex items-start">
+          <div className="flex-1">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+              {title}
+            </h3>
+            <p className="text-sm text-gray-700 dark:text-gray-300 mt-1">
+              {message}
+            </p>
+            {details && (
+              <details className="mt-3">
+                <summary className="text-xs text-label cursor-pointer hover:text-primary-600">
+                  Show details
+                </summary>
+                <pre className="mt-2 p-2 bg-neutral-50 rounded text-xs text-text overflow-auto">
+                  {details}
+                </pre>
+              </details>
+            )}
+          </div>
         </div>
-        <div className="error-message__text">
-          <h3 className="error-message__title">{title}</h3>
-          <p className="error-message__description">{message}</p>
-          {details && (
-            <details className="error-message__details">
-              <summary>Show details</summary>
-              <pre className="error-message__details-content">{details}</pre>
-            </details>
-          )}
-        </div>
-      </div>
+      </Alert>
       {onRetry && (
-        <button 
-          className="error-message__retry-btn"
+        <Button 
+          color="primary"
+          size="sm"
           onClick={onRetry}
-          type="button"
+          className="w-full sm:w-auto"
         >
           Try Again
-        </button>
+        </Button>
       )}
     </div>
   );

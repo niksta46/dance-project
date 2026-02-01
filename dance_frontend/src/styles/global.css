@@ -1,7 +1,4 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 
 /* Reset and base styles */
 * {
@@ -21,8 +18,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
-  color: #333;
-  background-color: #fff;
+  color: var(--tw-colors-text, #565360);
+  background-color: var(--tw-colors-white, #ffffff);
 }
 
 a {
@@ -39,21 +36,15 @@ img {
   height: auto;
 }
 
-/* Utility classes */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+@tailwind components;
+@tailwind utilities;
 
-.text-center {
-  text-align: center;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.text-right {
-  text-align: right;
+/* Custom CSS variables for design system */
+:root {
+  --color-text: #565360;
+  --color-label: #908E9B;
+  --color-disabled: #E1DFE9;
+  --color-primary: #5B0E14;
+  --color-secondary: #F1E194;
+  --color-neutral: #F2F5F5;
 }

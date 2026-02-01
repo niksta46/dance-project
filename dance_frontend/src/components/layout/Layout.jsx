@@ -5,9 +5,9 @@ import Footer from './Footer.jsx';
 
 function Layout() {
   return (
-    <div className="layout">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header />
-      <main className="main-content">
+      <main className="flex-1">
         <Outlet />
       </main>
       <Footer />

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Loading.css';
+import { Spinner } from 'flowbite-react';
 
 /**
  * Loading component - Displays a loading indicator
@@ -16,21 +16,31 @@ const Loading = ({
   fullScreen = false,
   className = '' 
 }) => {
-  const sizeClasses = {
-    small: 'loading--small',
-    medium: 'loading--medium',
-    large: 'loading--large'
+  const sizeMap = {
+    small: 'sm',
+    medium: 'md', 
+    large: 'xl'
   };
 
-  const containerClass = `loading ${sizeClasses[size]} ${fullScreen ? 'loading--fullscreen' : ''} ${className}`;
+  const spinnerSize = sizeMap[size] || 'md';
+  const containerClasses = `
+    flex flex-col items-center justify-center 
+    ${fullScreen ? 'fixed inset-0 bg-white bg-opacity-90 z-50' : 'p-4'} 
+    ${className}
+  `;
 
   return (
-    <div className={containerClass} role="status" aria-live="polite">
-      <div className="loading__spinner">
-        <div className="loading__spinner-circle"></div>
-      </div>
+    <div className={containerClasses} role="status" aria-live="polite">
+      <Spinner 
+        color="gray"
+        className="fill-slate-700 dark:fill-slate-300"
+        size={spinnerSize}
+        aria-hidden="true"
+      />
       {text && (
-        <p className="loading__text">{text}</p>
+        <p className="mt-3 text-label text-sm font-medium animate-pulse">
+          {text}
+        </p>
       )}
       <span className="sr-only">{text || 'Loading content'}</span>
     </div>

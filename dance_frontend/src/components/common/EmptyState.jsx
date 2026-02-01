@@ -1,5 +1,5 @@
 import React from 'react';
-import './EmptyState.css';
+import { Button } from 'flowbite-react';
 
 /**
  * EmptyState component - Displays a message when content is empty or not found
@@ -42,38 +42,53 @@ const EmptyState = ({
 
   const displayIcon = getDefaultIcon();
 
+  const variantClasses = {
+    default: 'text-neutral-500',
+    search: 'text-secondary-600',
+    error: 'text-red-500',
+    success: 'text-primary-600'
+  }[variant] || 'text-neutral-500';
+
   return (
     <div 
-      className={`empty-state empty-state--${variant} ${className}`}
+      className={`flex flex-col items-center justify-center text-center py-12 px-4 ${className}`}
       role="status"
       aria-live="polite"
     >
       {displayIcon && (
-        <div className="empty-state__icon" aria-hidden="true">
+        <div 
+          className={`text-4xl md:text-6xl mb-4 ${variantClasses}`}
+          aria-hidden="true"
+        >
           {displayIcon}
         </div>
       )}
       
-      <h2 className="empty-state__title">{title}</h2>
+      <h2 className="text-xl md:text-2xl font-semibold text-text mb-2">
+        {title}
+      </h2>
       
       {message && (
-        <p className="empty-state__message">{message}</p>
+        <p className="text-label max-w-md mb-6">
+          {message}
+        </p>
       )}
       
       {children && (
-        <div className="empty-state__content">
+        <div className="w-full max-w-md mb-6">
           {children}
         </div>
       )}
       
       {action && (
-        <button 
-          className="empty-state__action-btn"
+        <Button 
+          color="primary"
+          size="md"
           onClick={action}
-          type="button"
+          className="w-full sm:w-auto"
         >
           {actionText}
-        </button>
+        </Button>
       )}
     </div>
   );

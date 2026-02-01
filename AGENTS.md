@@ -445,7 +445,29 @@ API Client (api/*.js)
    - Create ErrorMessage.jsx component ⏳
    - Create EmptyState.jsx component ⏳
 
-#### Phase 3: Feature Implementation
+#### Phase 3: Design System Integration
+1. **Configure Tailwind CSS Customization**
+   - Add custom colors (#5BOE14, #F1E194, #F2F5F5)
+   - Add custom text colors (#565360, #908E9B, #E1DFE9)
+   - Add custom spacing values (0.25rem-4rem)
+   - Test Tailwind configuration with custom classes
+
+2. **Override Flowbite Theme**
+   - Create Flowbite theme overrides
+   - Apply custom colors to Flowbite components
+   - Test Flowbite components with new theme
+
+3. **Update Existing Components**
+   - Update Header.jsx with custom design system
+   - Update Footer.jsx with custom design system
+   - Update common components (Loading, ErrorMessage, EmptyState)
+
+4. **Create Design System Utilities**
+   - Create design system constants file
+   - Document usage patterns
+   - Create component examples
+
+#### Phase 4: Feature Implementation
 1. **Pages Feature**
    - Create PagesList.jsx component
    - Create PageDetail.jsx component
@@ -557,5 +579,10 @@ API Client (api/*.js)
 - ⏳ Implement Pages feature as proof of concept
 - ✅ Establish error handling and loading patterns
 - ✅ Fix routing issues with Layout component
+
+## Current Frontend Issues
+
+### Design System Integration Issues:
+- **✅ FIXED: Navbar bg color** - Applied direct `className="bg-primary-500"` to bypass Flowbite theme issue
 
 This document should be updated as the codebase evolves.
