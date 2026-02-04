@@ -1,5 +1,6 @@
 import React from 'react';
 import { Spinner } from 'flowbite-react';
+import { textVariants } from '../../styles/designSystem';
 
 /**
  * Loading component - Displays a loading indicator
@@ -38,7 +39,7 @@ const Loading = ({
         aria-hidden="true"
       />
       {text && (
-        <p className="mt-3 text-label text-sm font-medium animate-pulse">
+        <p className={`mt-3 ${textVariants.label.base} animate-pulse`}>
           {text}
         </p>
       )}
