@@ -28,11 +28,13 @@ The frontend treats the backend as an external service.
 ```
 src/
 ├── api/                # API service layer
+│   ├── client.js       # Base API client
+│   ├── queryKeys.js    # TanStack Query keys
+│   └── endpoints/      # Resource-specific API hooks
 ├── features/           # Feature-based UI modules
 ├── components/         # Reusable UI components
 │   ├── layout/
 │   └── common/
-├── hooks/              # Custom hooks
 ├── routes/             # Router configuration
 └── styles/             # Global styles
 ```
@@ -42,11 +44,12 @@ src/
 ## Data Flow Pattern
 
 ```
-API Client → useFetch Hook → Feature Component → UI Component
+API Client → TanStack Query Hooks → Feature Component → UI Component
 ```
 
 * All network logic lives in `api/`
 * UI components never call fetch directly
+* Automatic caching and invalidation handled by TanStack Query
 
 ---
 
@@ -55,15 +58,14 @@ API Client → useFetch Hook → Feature Component → UI Component
 * One module per resource
 
 * Consistent method naming:
+  * getAll, getById, create, update, patch, delete
+  * TanStack Query hooks: useXList, useX, useCreateX, useUpdateX, etc.
 
-  * getAll
-  * getById
-  * create
-  * update
-  * patch
-  * delete
+* Query keys centralized in `queryKeys.js`
 
 * Base URL provided via `VITE_API_URL`
+
+* Automatic cache invalidation on mutations
 
 ---
 
@@ -78,8 +80,9 @@ API Client → useFetch Hook → Feature Component → UI Component
 ## Loading & Empty States
 
 * Full-page loading: `Loading` component
-* Component-level loading: inline indicators
+* Component-level loading: TanStack Query `isLoading` state
 * Empty data: `EmptyState` component
+* Background refetching handled automatically
 
 ---
 
