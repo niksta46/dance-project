@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import client from './client.js';
+import client from '../client.js';
 import { queryKeys } from '../queryKeys.js';
 
 export const pagesApi = {

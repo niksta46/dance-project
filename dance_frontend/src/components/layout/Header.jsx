@@ -10,11 +10,11 @@ import { Link } from 'react-router-dom';
 
 function Header() {
   return (
-    <Navbar fluid rounded className="bg-primary-500">
+    <Navbar fluid rounded className="bg-primary-500 px-6 sm:px-8 lg:px-12">
       <NavbarBrand as={Link} to="/">
         <img
           src="src/assets/images/texnis_kinisi.jpg"
-          className="mr-3 h-6 sm:h-9"
+          className="mr-3 h-16 sm:h-24 -my-2"
           alt="Logo"
         />
         <span className="self-center whitespace-nowrap text-xl font-semibold text-white">
