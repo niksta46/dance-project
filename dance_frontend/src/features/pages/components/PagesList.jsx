@@ -8,7 +8,7 @@ import HeroSlider from '../../../components/common/HeroSlider';
 const getLink = (slug) => {
   const slugToRoute = {
     'news': '/news',
-    'classes': '/classes',
+    'sections': '/classes',
     'gallery': '/gallery',
     'aboutus': '/aboutus',
   };

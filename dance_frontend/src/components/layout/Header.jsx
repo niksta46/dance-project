@@ -28,7 +28,7 @@ function Header() {
         <NavbarLink as={Link} to="/">
           Home
         </NavbarLink>
-        <NavbarLink as={Link} to="/sections">
+        <NavbarLink as={Link} to="/classes">
           Classes
         </NavbarLink>
         <NavbarLink as={Link} to="/news">
