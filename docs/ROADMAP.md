@@ -21,11 +21,11 @@ Expose backend content through the frontend using existing architecture and desi
 
 ### Step 1: Pages Feature
 
-* [ ] Create `PagesList.jsx`
+* [x] Create `PagesList.jsx`
 * [ ] Create `PageDetail.jsx`
-* [ ] Connect to pages API
-* [ ] Handle loading / error / empty states
-* [ ] Add routes
+* [x] Connect to pages API
+* [x] Handle loading / error / empty states
+* [x] Add routes
 
 ---
 
