@@ -1,10 +1,11 @@
 from rest_framework import views, status
 from rest_framework.response import Response
 from django.db.models import Q
-from .models import Page, ClassSection, NewsPost, ContactMessage, SocialLink, MediaItem
+from .models import Page, ClassSection, NewsPost, ContactMessage, SocialLink, MediaItem, EventGallery
 from .serializers import (
     PageSerializer, ClassSectionSerializer, NewsPostSerializer,
-    ContactMessageSerializer, SocialLinkSerializer, MediaItemSerializer
+    ContactMessageSerializer, SocialLinkSerializer, MediaItemSerializer,
+    EventGallerySerializer
 )
 
 
@@ -118,6 +119,16 @@ class ClassSectionDetailAPIView(views.APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+class ClassSectionBySlugAPIView(views.APIView):
+    def get(self, request, slug):
+        try:
+            section = ClassSection.objects.get(slug__iexact=slug)
+        except ClassSection.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = ClassSectionSerializer(section)
+        return Response(serializer.data)
+
+
 class NewsPostAPIView(views.APIView):
     def get(self, request):
         posts = NewsPost.objects.all()
@@ -162,6 +173,16 @@ class NewsPostDetailAPIView(views.APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
         post.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class NewsPostBySlugAPIView(views.APIView):
+    def get(self, request, slug):
+        try:
+            post = NewsPost.objects.get(slug__iexact=slug)
+        except NewsPost.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = NewsPostSerializer(post)
+        return Response(serializer.data)
 
 
 class ContactMessageAPIView(views.APIView):
@@ -300,3 +321,59 @@ class MediaItemDetailAPIView(views.APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
         item.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class EventGalleryAPIView(views.APIView):
+    def get(self, request):
+        galleries = EventGallery.objects.all()
+        serializer = EventGallerySerializer(galleries, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = EventGallerySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class EventGalleryDetailAPIView(views.APIView):
+    def get_object(self, pk):
+        try:
+            return EventGallery.objects.get(pk=pk)
+        except EventGallery.DoesNotExist:
+            return None
+
+    def get(self, request, pk):
+        gallery = self.get_object(pk)
+        if gallery is None:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = EventGallerySerializer(gallery)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        gallery = self.get_object(pk)
+        if gallery is None:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = EventGallerySerializer(gallery, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        gallery = self.get_object(pk)
+        if gallery is None:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        gallery.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class EventGalleryBySlugAPIView(views.APIView):
+    def get(self, request, slug):
+        try:
+            gallery = EventGallery.objects.get(slug__iexact=slug)
+        except EventGallery.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = EventGallerySerializer(gallery)
+        return Response(serializer.data)

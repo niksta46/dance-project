@@ -14,8 +14,19 @@ This file represents the **single source of truth for the current state** of the
 ## Backend Status
 
 * Status: ✅ Complete & stable
-* Models: Page (title, slug, excerpt, content, address, phone, email), ClassSection, NewsPost, ContactMessage, SocialLink, MediaItem
-* API: pages (with exclude_slugs filter, slug endpoint), class-sections, news-posts, contact-messages, social-links, media-items
+* Models:
+  * Page (title, slug, excerpt, content, address, phone, email)
+  * ClassSection (name, slug, excerpt, description, age_group, level, schedule, is_active)
+  * NewsPost (title, slug, body, image, published_at, is_published)
+  * ContactMessage, SocialLink
+  * MediaItem (media_type, title, image, video_url, event ForeignKey)
+  * EventGallery (title, slug, excerpt, created_at, is_published) - NEW
+* API endpoints:
+  * pages (with exclude_slugs filter, slug endpoint)
+  * class-sections (list, detail, slug endpoint) - UPDATED
+  * news-posts (list, detail, slug endpoint) - UPDATED
+  * event-galleries (list, detail, slug endpoint) - NEW
+  * media-items, contact-messages, social-links
 
 ---
 
@@ -23,7 +34,7 @@ This file represents the **single source of truth for the current state** of the
 
 ### Infrastructure
 
-* Routing: ✅ complete
+* Routing: ✅ complete (slug-based routing)
 * Layout (Header - sticky, Footer - 3 columns, Layout): ✅ complete
 * Common components: ✅ complete
 * Error handling: ✅ complete
@@ -39,23 +50,26 @@ This file represents the **single source of truth for the current state** of the
 
 * TanStack Query: ✅ implemented
 * Query client setup: ✅ complete
-* Query keys configuration: ✅ complete
+* Query keys configuration: ✅ complete (centralized in queryKeys.js)
 * API endpoint hooks: ✅ complete
 * Caching and invalidation: ✅ configured
 
 ### Implemented Features
 
 * Home page: PagesList with HeroSlider
-* Pages feature (list only)
+* Pages feature: slug-based navigation to corresponding pages
+* Classes feature: ClassList, ClassDetail with slug routing - NEW
+* News feature: NewsList, NewsDetail with slug routing - NEW
+* Gallery feature: GalleryList, GalleryDetail with slug routing - NEW
+* About page: AboutPage - NEW
 * Footer: 3-column layout (logo, contact info, social links)
-* Header: sticky positioning
+* Header: sticky positioning with navigation links
 
 ---
 
 ## Not Implemented Yet
 
-* News feature (list & detail)
-* Classes feature (list & detail)
+* None - all major features implemented
 
 ---
 

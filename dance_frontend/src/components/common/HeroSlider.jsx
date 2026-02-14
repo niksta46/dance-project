@@ -3,7 +3,7 @@ import { Carousel } from 'flowbite-react';
 
 const HeroSlider = () => {
   return (
-    <div className="h-96 sm:h-[500px] lg:h-[600px]">
+    <div className="h-96 sm:h-[500px] lg:h-[600px] bg-neutral-100">
       <Carousel slideInterval={5000} theme={{
         root: {
           base: "relative h-full w-full",

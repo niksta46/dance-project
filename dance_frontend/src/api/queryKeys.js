@@ -12,6 +12,7 @@ export const queryKeys = {
     list: (params) => [...queryKeys.news.lists(), params],
     details: () => [...queryKeys.news.all, 'detail'],
     detail: (id) => [...queryKeys.news.details(), id],
+    bySlug: (slug) => [...queryKeys.news.all, 'slug', slug],
   },
   classes: {
     all: ['classes'],
@@ -19,6 +20,7 @@ export const queryKeys = {
     list: (params) => [...queryKeys.classes.lists(), params],
     details: () => [...queryKeys.classes.all, 'detail'],
     detail: (id) => [...queryKeys.classes.details(), id],
+    bySlug: (slug) => [...queryKeys.classes.all, 'slug', slug],
   },
   contactMessages: {
     all: ['contactMessages'],
@@ -40,5 +42,13 @@ export const queryKeys = {
     list: (params) => [...queryKeys.mediaItems.lists(), params],
     details: () => [...queryKeys.mediaItems.all, 'detail'],
     detail: (id) => [...queryKeys.mediaItems.details(), id],
+  },
+  eventGalleries: {
+    all: ['eventGalleries'],
+    lists: () => [...queryKeys.eventGalleries.all, 'list'],
+    list: (params) => [...queryKeys.eventGalleries.lists(), params],
+    details: () => [...queryKeys.eventGalleries.all, 'detail'],
+    detail: (id) => [...queryKeys.eventGalleries.details(), id],
+    bySlug: (slug) => [...queryKeys.eventGalleries.all, 'slug', slug],
   },
 }

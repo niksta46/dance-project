@@ -1,10 +1,11 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import client from './client.js';
+import client from '../client.js';
 import { queryKeys } from '../queryKeys.js';
 
 export const classSectionsApi = {
   getAll: (params = {}) => client.get('/class-sections/', params),
   getById: (id) => client.get(`/class-sections/${id}/`),
+  getBySlug: (slug) => client.get(`/class-sections/slug/${slug}/`),
   create: (data) => client.post('/class-sections/', data),
   update: (id, data) => client.put(`/class-sections/${id}/`, data),
   patch: (id, data) => client.patch(`/class-sections/${id}/`, data),
@@ -23,6 +24,14 @@ export const useClass = (id) => {
     queryKey: queryKeys.classes.detail(id),
     queryFn: () => classSectionsApi.getById(id),
     enabled: !!id,
+  });
+};
+
+export const useClassBySlug = (slug) => {
+  return useQuery({
+    queryKey: queryKeys.classes.bySlug(slug),
+    queryFn: () => classSectionsApi.getBySlug(slug),
+    enabled: !!slug,
   });
 };
 

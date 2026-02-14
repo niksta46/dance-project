@@ -1,10 +1,11 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import client from './client.js';
+import client from '../client.js';
 import { queryKeys } from '../queryKeys.js';
 
 export const newsPostsApi = {
   getAll: (params = {}) => client.get('/news-posts/', params),
   getById: (id) => client.get(`/news-posts/${id}/`),
+  getBySlug: (slug) => client.get(`/news-posts/slug/${slug}/`),
   create: (data) => client.post('/news-posts/', data),
   update: (id, data) => client.put(`/news-posts/${id}/`, data),
   patch: (id, data) => client.patch(`/news-posts/${id}/`, data),
@@ -23,6 +24,14 @@ export const useNewsPost = (id) => {
     queryKey: queryKeys.news.detail(id),
     queryFn: () => newsPostsApi.getById(id),
     enabled: !!id,
+  });
+};
+
+export const useNewsPostBySlug = (slug) => {
+  return useQuery({
+    queryKey: queryKeys.news.bySlug(slug),
+    queryFn: () => newsPostsApi.getBySlug(slug),
+    enabled: !!slug,
   });
 };
 

@@ -58,8 +58,8 @@ API Client → TanStack Query Hooks → Feature Component → UI Component
 * One module per resource
 
 * Consistent method naming:
-  * getAll, getById, create, update, patch, delete
-  * TanStack Query hooks: useXList, useX, useCreateX, useUpdateX, etc.
+  * getAll, getById, getBySlug, create, update, patch, delete
+  * TanStack Query hooks: useXList, useX, useXBySlug, useCreateX, useUpdateX, etc.
 
 * Query keys centralized in `queryKeys.js`
 
@@ -91,6 +91,8 @@ API Client → TanStack Query Hooks → Feature Component → UI Component
 * Uses `createBrowserRouter`
 * Layout rendered via `<Outlet />`
 * No `{children}` pattern for routes
+* **Slug-based routing**: Detail pages use `:slug` param (e.g., `/classes/:slug`, `/news/:slug`, `/gallery/:slug`)
+* Static pages mapped via Page slugs (e.g., `/aboutus` → AboutPage)
 
 ---
 

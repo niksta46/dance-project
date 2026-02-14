@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Page, ClassSection, NewsPost, ContactMessage, SocialLink, MediaItem
+from .models import Page, ClassSection, NewsPost, ContactMessage, SocialLink, MediaItem, EventGallery
 
 
 class PageSerializer(serializers.ModelSerializer):
@@ -18,9 +18,21 @@ class ClassSectionSerializer(serializers.ModelSerializer):
     def validate_description(self, value):
         return value.strip()
 
+    def validate_slug(self, value):
+        return value.strip().lower()
+
     class Meta:
         model = ClassSection
         fields = '__all__'
+
+
+class EventGallerySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EventGallery
+        fields = '__all__'
+
+    def validate_slug(self, value):
+        return value.strip().lower()
 
 
 class NewsPostSerializer(serializers.ModelSerializer):

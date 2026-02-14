@@ -28,6 +28,8 @@ class Page(models.Model):
 
 class ClassSection(models.Model):
     name = models.CharField(max_length=150)
+    slug = models.SlugField(unique=True)
+    excerpt = models.TextField(blank=True, help_text="Short description for class cards")
     description = models.TextField()
     age_group = models.CharField(max_length=100)
     level = models.CharField(max_length=100)
@@ -79,6 +81,18 @@ class SocialLink(models.Model):
 
 MEDIA_TYPE_CHOICES = [('photo', 'Photo'), ('video', 'Video')]
 
+
+class EventGallery(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True)
+    excerpt = models.TextField(blank=True, help_text="Short description for gallery cards")
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_published = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.title
+
+
 class MediaItem(models.Model):
     media_type = models.CharField(max_length=10, choices=MEDIA_TYPE_CHOICES)
     title = models.CharField(max_length=200, blank=True)
@@ -86,6 +100,7 @@ class MediaItem(models.Model):
     video_url = models.URLField(blank=True)
     is_published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    event = models.ForeignKey(EventGallery, on_delete=models.CASCADE, related_name='media_items', blank=True, null=True)
 
     def __str__(self):
         return self.title or self.media_type

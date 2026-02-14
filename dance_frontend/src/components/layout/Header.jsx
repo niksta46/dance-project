@@ -14,7 +14,7 @@ function Header() {
       <NavbarBrand as={Link} to="/">
         <img
           src="src/assets/images/texnis_kinisi.jpg"
-          className="mr-3 h-16 sm:h-24 -my-2"
+          className="mr-3 h-16 sm:h-24 -my-2 rounded-full border-4 border-primary-500"
           alt="Logo"
         />
         <span className="self-center whitespace-nowrap text-xl font-semibold text-white">
@@ -28,16 +28,16 @@ function Header() {
         <NavbarLink as={Link} to="/">
           Home
         </NavbarLink>
-        <NavbarLink as={Link} to="/classes">
+        <NavbarLink as={Link} to="/sections">
           Classes
         </NavbarLink>
         <NavbarLink as={Link} to="/news">
           News
         </NavbarLink>
-        <NavbarLink as={Link} to="/">
+        <NavbarLink as={Link} to="/gallery">
           Gallery
         </NavbarLink>
-        <NavbarLink as={Link} to="/">
+        <NavbarLink as={Link} to="/aboutus">
           About Us
         </NavbarLink>
       </NavbarCollapse>
