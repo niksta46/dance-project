@@ -1,5 +1,6 @@
 from rest_framework import views, status
 from rest_framework.response import Response
+from django.db.models import Q
 from .models import Page, ClassSection, NewsPost, ContactMessage, SocialLink, MediaItem
 from .serializers import (
     PageSerializer, ClassSectionSerializer, NewsPostSerializer,
@@ -9,7 +10,15 @@ from .serializers import (
 
 class PageAPIView(views.APIView):
     def get(self, request):
-        pages = Page.objects.all()
+        exclude_slugs = request.query_params.get('exclude_slugs', 'contact,socialmedia')
+        if exclude_slugs.lower() == 'none':
+            pages = Page.objects.all()
+        else:
+            slugs = [s.strip().lower() for s in exclude_slugs.split(',')]
+            query = Q()
+            for slug in slugs:
+                query |= Q(slug__iexact=slug)
+            pages = Page.objects.exclude(query)
         serializer = PageSerializer(pages, many=True)
         return Response(serializer.data)
 
@@ -51,6 +60,16 @@ class PageDetailAPIView(views.APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
         page.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class PageBySlugAPIView(views.APIView):
+    def get(self, request, slug):
+        try:
+            page = Page.objects.get(slug__iexact=slug)
+        except Page.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = PageSerializer(page)
+        return Response(serializer.data)
 
 
 class ClassSectionAPIView(views.APIView):

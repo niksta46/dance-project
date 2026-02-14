@@ -17,13 +17,13 @@ const HeroSlider = () => {
           },
         },
         control: {
-          base: "inline-flex h-8 w-8 items-center justify-center rounded-full bg-gray-400/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-700/50 dark:group-focus:ring-gray-800 sm:h-10 sm:w-10",
+          base: "inline-flex h-8 w-8 items-center justify-center rounded-full !bg-gray-400/50 hover:!bg-gray-400/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:!bg-gray-700/50 dark:group-focus:ring-gray-800 sm:h-10 sm:w-10",
           icon: "h-4 w-4 text-white dark:text-gray-800 sm:h-6 sm:w-6"
         }
       }}>
         <div className="relative h-full w-full">
           <img 
-            src="/src/assets/images/pic1.jpg" 
+            src="/src/assets/images/pic4.jpg" 
             alt="Dance group photo 1"
             className="h-full w-full object-contain"
           />
@@ -31,7 +31,7 @@ const HeroSlider = () => {
         
         <div className="relative h-full w-full">
           <img 
-            src="/src/assets/images/pic2.jpg" 
+            src="/src/assets/images/pic5.jpg" 
             alt="Dance group photo 2"
             className="h-full w-full object-contain"
           />

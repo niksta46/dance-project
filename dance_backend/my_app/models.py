@@ -6,7 +6,11 @@ from django.db.models import Max
 class Page(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
+    excerpt = models.TextField(blank=True, help_text="Short description for page lists")
     content = models.TextField()
+    address = models.CharField(max_length=255, blank=True, help_text="Address for contact page")
+    phone = models.CharField(max_length=50, blank=True, help_text="Phone number for contact page")
+    email = models.EmailField(blank=True, help_text="Email for contact page")
     is_published = models.BooleanField(default=True)
     order = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)

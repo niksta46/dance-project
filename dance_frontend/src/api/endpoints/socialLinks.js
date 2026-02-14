@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import client from './client.js';
+import client from '../client.js';
 import { queryKeys } from '../queryKeys.js';
 
 export const socialLinksApi = {
@@ -30,7 +30,7 @@ export const useCreateSocialLink = () => {
   const queryClient = useQueryClient();
   
   return useMutation({
-    mutationFn: socialLinksApi.create,
+    mutationFn: (data) => socialLinksApi.create(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.socialLinks.lists() });
     },
@@ -65,9 +65,10 @@ export const useDeleteSocialLink = () => {
   const queryClient = useQueryClient();
   
   return useMutation({
-    mutationFn: socialLinksApi.delete,
-    onSuccess: () => {
+    mutationFn: (id) => socialLinksApi.delete(id),
+    onSuccess: (_, { id }) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.socialLinks.lists() });
+      queryClient.removeQueries({queryKey: queryKeys.socialLinks.detail(id)})
     },
   });
 };

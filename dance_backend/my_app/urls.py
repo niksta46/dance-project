@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('pages/', views.PageAPIView.as_view(), name='page-list'),
+    path('pages/slug/<str:slug>/', views.PageBySlugAPIView.as_view(), name='page-by-slug'),
     path('pages/<int:pk>/', views.PageDetailAPIView.as_view(), name='page-detail'),
     path('class-sections/', views.ClassSectionAPIView.as_view(), name='class-section-list'),
     path('class-sections/<int:pk>/', views.ClassSectionDetailAPIView.as_view(), name='class-section-detail'),

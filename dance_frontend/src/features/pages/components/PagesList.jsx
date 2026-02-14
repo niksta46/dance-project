@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { usePagesList } from '../../../api/endpoints/pages';
 import { Loading, ErrorMessage, EmptyState, EmptyStatePresets } from '../../../components/common';
 import { textVariants, cardVariants } from '../../../styles/designSystem';
+import HeroSlider from '../../../components/common/HeroSlider';
 
 const PagesList = () => {
   const { data: pages, isLoading, error } = usePagesList();
@@ -22,26 +23,43 @@ const PagesList = () => {
   }
 
   if (!pages || pages.length === 0) {
-    return <EmptyStatePresets.NoData />;
+    return (
+      <div>
+        <HeroSlider />
+        <EmptyStatePresets.NoData />
+      </div>
+    );
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className={textVariants.heading.h1}>Pages</h1>
+    <div>
+      <HeroSlider />
+      <div className="w-full p-6" />
       
       <div className="grid gap-4 mt-8">
         {pages.map((page) => (
           <Link 
             key={page.id} 
             to={`/pages/${page.id}`}
-            className={`block ${cardVariants.default.base} ${cardVariants.default.padding.medium} hover:shadow-md transition-shadow`}
+            className={`block w-full ${cardVariants.default.base} ${cardVariants.default.padding.none} hover:shadow-md transition-shadow overflow-hidden`}
           >
-            <h2 className={textVariants.heading.h3}>{page.title}</h2>
-            {page.excerpt && (
-              <p className={`${textVariants.body.small} text-gray-600 mt-2`}>
-                {page.excerpt}
-              </p>
-            )}
+            <div className="flex h-[500px]">
+              <div className="w-1/2 h-full">
+                <img 
+                  src="/src/assets/images/texnis_kinisi.jpg" 
+                  alt={page.title}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="w-1/2 p-6 flex flex-col justify-center">
+                <h2 className={textVariants.heading.h3}>{page.title}</h2>
+                {page.excerpt && (
+                  <p className={`${textVariants.body.small} text-gray-600 mt-2`}>
+                    {page.excerpt}
+                  </p>
+                )}
+              </div>
+            </div>
           </Link>
         ))}
       </div>
