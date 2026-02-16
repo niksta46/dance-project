@@ -52,6 +52,34 @@ Expose backend content through the frontend using existing architecture and desi
 
 ---
 
+## Phase 5: Mobile Responsiveness
+
+### Goal
+
+Ensure the website is fully functional and visually appealing on mobile devices.
+
+### Tasks
+
+* [x] Analyze existing components for responsiveness issues
+* [x] Check navigation / header behavior on mobile
+* [x] Verify cards, images, and layouts adapt to different screen sizes
+* [x] Test specific breakpoints (mobile < 640px, tablet 640-1024px, desktop > 1024px)
+
+### Identified Issues & Fixes Required
+
+**PagesList.jsx** (Priority: High)
+- [ ] Change `flex h-[500px]` to stack vertically on mobile
+- [ ] Add `flex-col` on mobile, `md:flex-row` on desktop
+- [ ] Change fixed height to `h-auto` or responsive `h-64 md:h-96`
+
+**Footer text alignment** (Priority: Low)
+- [ ] Center align text on mobile for better appearance
+
+**Text sizes** (Priority: Low)
+- [ ] Check if headings are too large on small screens
+
+---
+
 ## Agent Instruction
 
 Agents must:
