@@ -56,7 +56,7 @@ const PagesList = () => {
             <div className="flex h-[500px]">
               <div className="w-1/2 h-full">
                 <img 
-                  src={`/src/assets/images/${page.slug}.jpg`}
+                  src={`/images/${page.slug}.jpg`}
                   alt={page.title}
                   className="w-full h-full object-cover rounded-lg"
                 />

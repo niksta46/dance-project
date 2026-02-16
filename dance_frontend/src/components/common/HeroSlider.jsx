@@ -23,7 +23,7 @@ const HeroSlider = () => {
       }}>
         <div className="relative h-full w-full">
           <img 
-            src="/src/assets/images/pic4.jpg" 
+            src="/images/pic4.jpg" 
             alt="Dance group photo 1"
             className="h-full w-full object-contain"
           />
@@ -31,7 +31,7 @@ const HeroSlider = () => {
         
         <div className="relative h-full w-full">
           <img 
-            src="/src/assets/images/pic5.jpg" 
+            src="/images/pic5.jpg" 
             alt="Dance group photo 2"
             className="h-full w-full object-contain"
           />
@@ -39,7 +39,7 @@ const HeroSlider = () => {
         
         <div className="relative h-full w-full">
           <img 
-            src="/src/assets/images/pic3.jpg" 
+            src="/images/pic3.jpg" 
             alt="Dance group photo 3"
             className="h-full w-full object-contain"
           />

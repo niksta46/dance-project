@@ -14,7 +14,7 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="flex justify-start items-center">
             <img 
-              src="/src/assets/images/texnis_kinisi.jpg" 
+              src="/images/texnis_kinisi.jpg" 
               alt="Logo" 
               className="w-24 h-24 object-contain rounded-lg"
             />
