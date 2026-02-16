@@ -56,7 +56,9 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
 ]
 
-CORS_ALLOWED_ORIGINS = ['nikos-dance-site.vercel.app']
+CORS_ALLOWED_ORIGINS = ["https://nikos-dance-site.vercel.app"]
+CORS_ALLOWED_ORIGIN_REGEXES = [r"^https://.*\.vercel\.app$"]
+
 
 ROOT_URLCONF = 'backend.urls'
 
