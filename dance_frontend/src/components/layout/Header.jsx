@@ -13,7 +13,7 @@ function Header() {
     <Navbar fluid rounded className="sticky top-0 z-50 bg-primary-500 px-6 sm:px-8 lg:px-12">
       <NavbarBrand as={Link} to="/">
         <img
-          src="src/assets/images/texnis_kinisi.jpg"
+          src="/images/texnis_kinisi.jpg"
           className="mr-3 h-16 sm:h-24 -my-2 rounded-full border-4 border-primary-500"
           alt="Logo"
         />
