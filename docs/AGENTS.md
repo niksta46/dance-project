@@ -16,12 +16,13 @@ For project progress and goals, refer to:
 
 * PROJECT_STATE.md (current status)
 * ROADMAP.md (future work)
+* DEPLOYMENT.md (deployment progress)
 
 ---
 
 ## Agent Role
 
-* You are a **frontend-only agent**
+* You are a **full-stack agent**
 * Treat the backend as a **stable external API**
 * Your responsibility is to **consume existing endpoints** and build UI features
 
@@ -115,11 +116,12 @@ Do not introduce new architectural patterns unless instructed.
 
 ## Documentation Authority
 
-| File             | Who Updates It | Purpose                |
-| ---------------- | -------------- | ---------------------- |
-| AGENTS.md        | ❌ Agent        | Agent behavior & rules |
-| ARCHITECTURE.md  | ❌ Agent        | Technical structure    |
-| PROJECT_STATE.md | ✅ Owner        | Current project status |
-| ROADMAP.md       | ✅ Owner        | Goals & next steps     |
+| File              | Who Updates It | Purpose                     |
+| ----------------- | -------------- | --------------------------- |
+| AGENTS.md         | ❌ Agent        | Agent behavior & rules      |
+| ARCHITECTURE.md   | ❌ Agent        | Technical structure         |
+| PROJECT_STATE.md  | ✅ Owner        | Current project status      |
+| ROADMAP.md        | ✅ Owner        | Goals & next steps          |
+| DEPLOYMENT.md     | ✅ Owner        | Deployment progress tracking |
 
 Agents must respect this separation at all times.

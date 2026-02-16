@@ -22,7 +22,6 @@ Expose backend content through the frontend using existing architecture and desi
 ### Step 1: Pages Feature
 
 * [x] Create `PagesList.jsx`
-* [ ] Create `PageDetail.jsx`
 * [x] Connect to pages API
 * [x] Handle loading / error / empty states
 * [x] Add routes
@@ -31,17 +30,17 @@ Expose backend content through the frontend using existing architecture and desi
 
 ### Step 2: News Feature
 
-* [ ] News list page
-* [ ] News detail page
-* [ ] Image rendering
+* [x] News list page
+* [x] News detail page
+* [x] Image rendering
 
 ---
 
 ### Step 3: Classes Feature
 
-* [ ] Classes list page
-* [ ] Classes detail page
-* [ ] Schedule & metadata display
+* [x] Classes list page
+* [x] Classes detail page
+* [x] Schedule & metadata display
 
 ---
 

@@ -79,6 +79,14 @@ This file represents the **single source of truth for the current state** of the
 
 ---
 
+## Deployment
+
+* Status: In progress
+* Platforms: Vercel (frontend) + Render (backend + PostgreSQL)
+* Progress: See [DEPLOYMENT.md](./DEPLOYMENT.md)
+
+---
+
 ## Agent Instruction
 
 Before starting any work, agents **must read this file** to understand the current baseline.
